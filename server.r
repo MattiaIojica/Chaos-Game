@@ -361,11 +361,14 @@ output$my.app <- renderUI({
         points(coord[1:input$init-1,1],coord[1:input$init-1,2],pch=20,cex=1,col="blue")  
 
         #punct plecare
-        points(coord[input$init-1,1],coord[input$init-1,2],pch=20,cex=2.75,col="blue")  
+        if(input$skipped.points == 1)
+        {
+          points(coord[input$init-1,1],coord[input$init-1,2],pch=20,cex=2.75,col="blue")  
        
-        #punct curent de mijloc
-        points(coord[input$init,1],coord[input$init,2],pch=21,cex=3,col="blue",bg="white")  
-        points(coord[input$init,1],coord[input$init,2],pch=20,cex=2.75,col="blue")  
+          #punct curent de mijloc
+          points(coord[input$init,1],coord[input$init,2],pch=21,cex=3,col="blue",bg="white")  
+          points(coord[input$init,1],coord[input$init,2],pch=20,cex=2.75,col="blue")  
+        }
         
         x0 <- coord[input$init-1,1]
         y0 <- coord[input$init-1,2]
@@ -377,8 +380,11 @@ output$my.app <- renderUI({
         v.x <- matrice[matrice[,1]==varf[input$init-1],2]
         v.y <- matrice[matrice[,1]==varf[input$init-1],3]
 
-        points(v.x,v.y,pch=1,cex=4,lwd=2)
-        points(v.x,v.y,pch=1,cex=3,lwd=2)
+        if(input$skipped.points == 1)
+        {
+          points(v.x,v.y,pch=1,cex=4,lwd=2)
+          points(v.x,v.y,pch=1,cex=3,lwd=2)
+        }
       }
     }
     
