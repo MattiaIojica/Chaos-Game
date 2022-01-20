@@ -57,7 +57,7 @@ shinyUI(fluidPage(
                     label = h5(tags$b("Distanta pana la urmatorul punct:")),
                     min = 0.01, max = .99, value = .67, step=.01),
       div(tags$b("Hexagon"), ": valoare default = 0.67 (2/3)",
-          style = "font-size: 9.5pt;color:teal",align="center")
+          style = "font-size: 9.5pt;color:black",align="center")
       ),
 
     br(),
