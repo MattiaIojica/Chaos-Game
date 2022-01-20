@@ -1,15 +1,8 @@
-# ----------------------------------------
-#  App Title: Chaos Game -- 2 Dimensions
-#     Author: Jimmy Doi
-# ----------------------------------------
-
 library(shiny)
 library(shinyBS)
 library(shape)
 
-###################################################################
-# Triangle
-###################################################################
+# Triunghi
 
 tri.gen <- function(wt){
   	weight <- wt
@@ -49,9 +42,7 @@ tri.gen <- function(wt){
 }
 
 
-###################################################################
 # Square
-###################################################################
 
 sqr.gen <- function(wt){
   
@@ -102,9 +93,7 @@ sqr.gen <- function(wt){
 }
 
 
-###################################################################
 # Pentagon
-###################################################################
 
 pent.gen <- function(wt){
   
@@ -153,9 +142,7 @@ pent.gen <- function(wt){
     return(list(loci,vertices,coords))
 }
 
-###################################################################
 # Hexagon
-###################################################################
 
 hex.gen <- function(wt){
   
@@ -204,27 +191,25 @@ hex.gen <- function(wt){
     return(list(loci,vertices,coords))
 }
 
-##############################################################################
 # Shiny Server Contents 
-##############################################################################
 
 shinyServer(function(input, output, session) {
 
 output$my.init <- renderUI({
   input$shape
     sliderInput(inputId = "init",
-      "Number of points (n):",
+      "Numar de puncte (n):",
       min = 1,
       max = 100,
       step = 1,
       value = 1,
-      animate=animationOptions(interval = 1000))
+      animate=animationOptions(interval = 700))
   })
 
 output$my.extend <- renderUI({
   input$shape
     sliderInput("extend",
-      "Number of points (n):",
+      "Numar de puncte (n):",
       min = 100,
       max = 1000,
       step = 25,
@@ -235,7 +220,7 @@ output$my.extend <- renderUI({
 output$my.pts <- renderUI({
   input$shape
     sliderInput("pts",
-      "Number of points (n):",
+      "Numar de puncte (n):",
       min = 1000,
       max = 50000,
       step = 1000,
@@ -262,7 +247,7 @@ output$my.pts <- renderUI({
   
 
 ##################################
-# initPlot                       #
+# Secventa Initiala              #
 ##################################
 
   output$initPlot <- renderPlot({
@@ -272,7 +257,7 @@ output$my.pts <- renderUI({
     coords    <- all.list()[[3]]
     
     #############################
-    # Triangle:INIT             #
+    # Triunghi:INIT             #
     #############################
     if (input$shape == "tri") {
       
@@ -286,23 +271,23 @@ output$my.pts <- renderUI({
       points(coords[1,1],coords[1,2],pch=20,cex=3,col="blue")  
       
       if (coords[1,1]>=0.5 & coords[1,2]<=sqrt(3)/4) {
-        text(coords[1,1],coords[1,2]+0.04,"Random Starting Point",col="blue",pos=2)
+        text(coords[1,1],coords[1,2]+0.04,"Punct random",col="blue",pos=2)
       }
       if (coords[1,1]>=0.5 & coords[1,2]>sqrt(3)/4) {
-        text(coords[1,1],coords[1,2]-0.04,"Random Starting Point",col="blue",pos=2)
+        text(coords[1,1],coords[1,2]-0.04,"Punct random",col="blue",pos=2)
       }
       if (coords[1,1]<0.5 & coords[1,2]>sqrt(3)/4) {
-        text(coords[1,1],coords[1,2]-0.04,"Random Starting Point",col="blue",pos=4)
+        text(coords[1,1],coords[1,2]-0.04,"Punct random",col="blue",pos=4)
       }
       if (coords[1,1]<0.5 & coords[1,2]<=sqrt(3)/4) {
-        text(coords[1,1],coords[1,2]+0.04,"Random Starting Point",col="blue",pos=4)
+        text(coords[1,1],coords[1,2]+0.04,"Punct random",col="blue",pos=4)
       }
     }
     }
     }
     
     #############################
-    # Square:INIT               #
+    # Patrat:INIT               #
     #############################
     if (input$shape == "sqr") {
     
@@ -314,16 +299,16 @@ output$my.pts <- renderUI({
       points(coords[1,1],coords[1,2],pch=20,cex=3,col="blue")  
       
       if (coords[1,1]>=0.5 & coords[1,2]<=0.5) { # LOWER RIGHT
-        text(coords[1,1],coords[1,2]+0.04,"Random Starting Point",col="blue",pos=2)
+        text(coords[1,1],coords[1,2]+0.04,"Punct random",col="blue",pos=2)
       }
       if (coords[1,1]>=0.5 & coords[1,2]>0.5) {  # UPPER RIGHT
-        text(coords[1,1],coords[1,2]-0.04,"Random Starting Point",col="blue",pos=2)
+        text(coords[1,1],coords[1,2]-0.04,"Punct random",col="blue",pos=2)
       }
       if (coords[1,1]<0.5 & coords[1,2]>0.5) {   # UPPER LEFT
-        text(coords[1,1],coords[1,2]-0.04,"Random Starting Point",col="blue",pos=4)
+        text(coords[1,1],coords[1,2]-0.04,"Punct random",col="blue",pos=4)
       }
       if (coords[1,1]<0.5 & coords[1,2]<=0.5) {  # LOWER LEFT
-        text(coords[1,1],coords[1,2]+0.04,"Random Starting Point",col="blue",pos=4)
+        text(coords[1,1],coords[1,2]+0.04,"Punct random",col="blue",pos=4)
       }
     }
     }
@@ -346,16 +331,16 @@ output$my.pts <- renderUI({
       points(coords[1,1],coords[1,2],pch=20,cex=3,col="blue")  
       
       if (coords[1,1]>=0 & coords[1,2]<=0) { # LOWER RIGHT
-        text(coords[1,1],coords[1,2]+0.04,"Random Starting Point",col="blue",pos=2)
+        text(coords[1,1],coords[1,2]+0.04,"Punct random",col="blue",pos=2)
       }
       if (coords[1,1]>=0 & coords[1,2]>0) {  # UPPER RIGHT
-        text(coords[1,1],coords[1,2]-0.04,"Random Starting Point",col="blue",pos=2)
+        text(coords[1,1],coords[1,2]-0.04,"Punct random",col="blue",pos=2)
       }
       if (coords[1,1]<0 & coords[1,2]>0) {   # UPPER LEFT
-        text(coords[1,1],coords[1,2]-0.04,"Random Starting Point",col="blue",pos=4)
+        text(coords[1,1],coords[1,2]-0.04,"Punct random",col="blue",pos=4)
       }
       if (coords[1,1]<0 & coords[1,2]<=0) {  # LOWER LEFT
-        text(coords[1,1],coords[1,2]+0.04,"Random Starting Point",col="blue",pos=4)
+        text(coords[1,1],coords[1,2]+0.04,"Punct random",col="blue",pos=4)
       }
     }
     }
@@ -376,16 +361,16 @@ output$my.pts <- renderUI({
       points(coords[1,1],coords[1,2],pch=20,cex=3,col="blue")  
       
       if (coords[1,1]>=0 & coords[1,2]<=0) { # LOWER RIGHT
-        text(coords[1,1],coords[1,2]+0.04,"Random Starting Point",col="blue",pos=2)
+        text(coords[1,1],coords[1,2]+0.04,"Punct random",col="blue",pos=2)
       }
       if (coords[1,1]>=0 & coords[1,2]>0) {  # UPPER RIGHT
-        text(coords[1,1],coords[1,2]-0.04,"Random Starting Point",col="blue",pos=2)
+        text(coords[1,1],coords[1,2]-0.04,"Punct random",col="blue",pos=2)
       }
       if (coords[1,1]<0 & coords[1,2]>0) {   # UPPER LEFT
-        text(coords[1,1],coords[1,2]-0.04,"Random Starting Point",col="blue",pos=4)
+        text(coords[1,1],coords[1,2]-0.04,"Punct random",col="blue",pos=4)
       }
       if (coords[1,1]<0 & coords[1,2]<=0) {  # LOWER LEFT
-        text(coords[1,1],coords[1,2]+0.04,"Random Starting Point",col="blue",pos=4)
+        text(coords[1,1],coords[1,2]+0.04,"Punct random",col="blue",pos=4)
       }
     }
     }
@@ -405,7 +390,7 @@ output$my.pts <- renderUI({
     x1 <- coords[input$init,1]
     y1 <- coords[input$init,2]
     
-    Arrows((.6*x0+.4*x1),(.6*y0+.4*y1),(.4*x0+.6*x1),(.4*y0+.6*y1),col="blue",lwd=2)
+    # Arrows((.6*x0+.4*x1),(.6*y0+.4*y1),(.4*x0+.6*x1),(.4*y0+.6*y1),col="blue",lwd=2)
     
     v.x <- loci[loci[,1]==vertices[input$init-1],2]
     v.y <- loci[loci[,1]==vertices[input$init-1],3]
@@ -421,7 +406,7 @@ output$my.pts <- renderUI({
   }) # initPlot's renderPlot
 
 ##################################
-# extendPlot                     #
+# Secventa avansata              #
 ##################################
   output$extendPlot <- renderPlot({
 
@@ -490,7 +475,7 @@ output$my.pts <- renderUI({
   }) # extendPlot's renderPlot
 
 ##################################
-# compPlot                       #
+# Secventa Finala                #
 ##################################
   output$compPlot <- renderPlot({
     
@@ -499,7 +484,7 @@ output$my.pts <- renderUI({
     coords    <- all.list()[[3]]
 
     #############################
-    # Triangle:COMPLETE         #
+    # Triunghi:COMPLETE         #
     #############################
     if (input$shape == "tri") {
 
@@ -509,7 +494,7 @@ output$my.pts <- renderUI({
     }
     
     #############################
-    # Square:COMPLETE           #
+    # Patrat:COMPLETE           #
     #############################
     if (input$shape == "sqr") {
 
