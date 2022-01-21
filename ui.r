@@ -29,7 +29,7 @@ shinyUI(fluidPage(
     wellPanel(
 
     #dropbox figuri
-    selectizeInput('shape', h5(tags$b('Figura')), 
+    selectizeInput(inputId = 'shape', h5(tags$b('Figura')), 
         choices = c('Triunghi' = 'tri',
                      'Patrat' = 'sqr',
                      'Pentagon' = 'pent',
@@ -41,7 +41,7 @@ shinyUI(fluidPage(
     #triunghi
     conditionalPanel(
       condition = "input.shape=='tri'",
-        sliderInput("dist.tri",
+        sliderInput(inputId = "dist.tri",
                     label = h5(tags$b("Distanta pana la urmatorul punct:")),
                     min = 0.01, max = .99, value = .50, step=.01),
       div(tags$b("Triunghi"), ": valoare default = 0.50 (1/2)",
@@ -51,7 +51,7 @@ shinyUI(fluidPage(
     #patrat
     conditionalPanel(
       condition = "input.shape=='sqr'",
-        sliderInput("dist.sqr",
+        sliderInput(inputId = "dist.sqr",
                     label = h5(tags$b("Distanta pana la urmatorul punct:")),
                     min = 0.01, max = .99, value = .67, step=.01),
       div(tags$b("Patrat"), ": valoare default = 0.67 (2/3)",
@@ -61,7 +61,7 @@ shinyUI(fluidPage(
     #pentagon
     conditionalPanel(
       condition = "input.shape=='pent'",
-        sliderInput("dist.pent",
+        sliderInput(inputId = "dist.pent",
                     label = h5(tags$b("Distanta pana la urmatorul punct:")),
                     min = 0.01, max = .99, value = .63, step=.01),
       div(tags$b("Pentagon"), ": valoare default = 0.63 (5/8)",
@@ -71,7 +71,7 @@ shinyUI(fluidPage(
     #hexagon
     conditionalPanel(
       condition = "input.shape=='hex'",
-        sliderInput("dist.hex",
+        sliderInput(inputId = "dist.hex",
                     label = h5(tags$b("Distanta pana la urmatorul punct:")),
                     min = 0.01, max = .99, value = .67, step=.01),
       div(tags$b("Hexagon"), ": valoare default = 0.67 (2/3)",
@@ -83,14 +83,14 @@ shinyUI(fluidPage(
 
     conditionalPanel(
       condition = NULL,
-      textInput("time.between", "Timp intre iteratii (ms)", 500)
+      textInput(inputId = "time.between", "Timp intre iteratii (ms)", 500)
     ),
     hr(),
 
     #slide nr puncte pentru fiecare iteratie
     conditionalPanel(
       condition = NULL,
-        sliderInput("skipped.points",
+        sliderInput(inputId = "skipped.points",
                     label = h5(tags$b("Numar puncte adaugate dupa fiecare pas:")),
                     min = 1, max = 100, value = 1, step = NULL)
       ),
@@ -128,7 +128,7 @@ shinyUI(fluidPage(
           fluidRow(
             column(12,
                    div(
-                   div(plotOutput("initPlot"),style="width:500px",inline="TRUE"),align="center"),
+                   div(plotOutput("app.start"),style="width:500px",inline="TRUE"),align="center"),
             #linie orizontala sub joc
              HTML("<hr style='height: 2px; color: #BDBDBD; background-color: #D9D9D9; border: none;'>")
             ), # column-12

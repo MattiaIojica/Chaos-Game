@@ -198,7 +198,7 @@ output$my.app <- renderUI({
     sliderInput(inputId = "init",
       "Numar de puncte afisate (n):",
       min = 1,
-      max = 10000,
+      max = 20000,
       step = input$skipped.points,
       value = 1,
       animate=animationOptions(interval = input$time.between))
@@ -228,7 +228,7 @@ output$my.app <- renderUI({
 # Chaos Game                     #
 ##################################
 
-  output$initPlot <- renderPlot({
+  output$app.start <- renderPlot({
     
     matrice      <- all.list()[[1]]
     varf  <- all.list()[[2]]
@@ -247,16 +247,16 @@ output$my.app <- renderUI({
           if (input$init==1) {
             points(coord[1,1],coord[1,2],pch=20,cex=3,col="blue")  
             
-            if (coord[1,1]>=0.5 & coord[1,2]<=sqrt(3)/4) {
+            if (coord[1,1]>=0.5 & coord[1,2]<=sqrt(3)/4) { # LOWER RIGHT
               text(coord[1,1],coord[1,2]+0.04,"Punct random",col="blue",pos=2)
             }
-            if (coord[1,1]>=0.5 & coord[1,2]>sqrt(3)/4) {
+            if (coord[1,1]>=0.5 & coord[1,2]>sqrt(3)/4) { # UPPER RIGHT
               text(coord[1,1],coord[1,2]-0.04,"Punct random",col="blue",pos=2)
             }
-            if (coord[1,1]<0.5 & coord[1,2]>sqrt(3)/4) {
+            if (coord[1,1]<0.5 & coord[1,2]>sqrt(3)/4) { # UPPER LEFT
               text(coord[1,1],coord[1,2]-0.04,"Punct random",col="blue",pos=4)
             }
-            if (coord[1,1]<0.5 & coord[1,2]<=sqrt(3)/4) {
+            if (coord[1,1]<0.5 & coord[1,2]<=sqrt(3)/4) { # LOWER LEFT
               text(coord[1,1],coord[1,2]+0.04,"Punct random",col="blue",pos=4)
             }
           }
@@ -384,7 +384,7 @@ output$my.app <- renderUI({
         {
           #incercuire punct rosu
           #points(v.x,v.y,pch=1,cex=4,lwd=2)
-          points(v.x,v.y,pch=1,cex=3,lwd=2)
+          points(v.x,v.y,pch=1,cex=2.5,lwd=2)
         }
       }
     }
