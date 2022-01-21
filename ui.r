@@ -1,5 +1,6 @@
 if (!require("shiny")) install.packages("shiny")
 if (!require("shinyBS")) install.packages("shinyBS")
+if (!require("shape")) install.packages("shape")
 
 library(shiny)
 library(shinyBS)
