@@ -382,7 +382,8 @@ output$my.app <- renderUI({
 
         if(input$skipped.points == 1)
         {
-          points(v.x,v.y,pch=1,cex=4,lwd=2)
+          #incercuire punct rosu
+          #points(v.x,v.y,pch=1,cex=4,lwd=2)
           points(v.x,v.y,pch=1,cex=3,lwd=2)
         }
       }
