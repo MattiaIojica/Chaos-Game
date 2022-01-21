@@ -5,30 +5,39 @@ library(shiny)
 library(shinyBS)
 
 shinyUI(fluidPage(
-   
+  
+  tags$head(
+    tags$style(HTML("
+      body {
+        overflow-x: hidden;
+      }
+      ")
+      )
+  ),
+
   tags$title("Chaos Game"),
 
   h1("Chaos Game in 2 dimensiuni", align = "center", style = "font-size: 50px"),
 
   h4("Iojica Mattia, Rosca Alexandru",align = "center"),
 
-  br(),
+  # br(),
 
   fluidRow(
     column(4,
     wellPanel(
 
-
-#dropbox figuri
+    #dropbox figuri
     selectizeInput('shape', h5(tags$b('Figura')), 
         choices = c('Triunghi' = 'tri',
                      'Patrat' = 'sqr',
                      'Pentagon' = 'pent',
                      'Hexagon' = 'hex')
     ),
+    hr(),
 
 
-#triunghi
+    #triunghi
     conditionalPanel(
       condition = "input.shape=='tri'",
         sliderInput("dist.tri",
@@ -38,7 +47,7 @@ shinyUI(fluidPage(
           style = "font-size: 9.5pt;color:black",align="center")
       ),
 
-#patrat
+    #patrat
     conditionalPanel(
       condition = "input.shape=='sqr'",
         sliderInput("dist.sqr",
@@ -48,7 +57,7 @@ shinyUI(fluidPage(
           style = "font-size: 9.5pt;color:black",align="center")
       ),
 
-#pentagon
+    #pentagon
     conditionalPanel(
       condition = "input.shape=='pent'",
         sliderInput("dist.pent",
@@ -58,7 +67,7 @@ shinyUI(fluidPage(
           style = "font-size: 9.5pt;color:black",align="center")
       ),
 
-#hexagon
+    #hexagon
     conditionalPanel(
       condition = "input.shape=='hex'",
         sliderInput("dist.hex",
@@ -68,24 +77,27 @@ shinyUI(fluidPage(
           style = "font-size: 9.5pt;color:black",align="center")
       ),
 
-    br(),
+    # br(),
+    hr(),
 
     conditionalPanel(
       condition = NULL,
       textInput("time.between", "Timp intre iteratii (ms)", 500)
     ),
-   
-   #slide nr puncte pentru fiecare iteratie
+    hr(),
+
+    #slide nr puncte pentru fiecare iteratie
     conditionalPanel(
       condition = NULL,
         sliderInput("skipped.points",
-                    label = h5(tags$b("Numar puncte pentru fiecare pas:")),
+                    label = h5(tags$b("Numar puncte adaugate dupa fiecare pas:")),
                     min = 1, max = 100, value = 1, step = NULL)
       ),
 
-    br(),
+    # br(),
+    hr(),
 
-#text sub nr de puncte
+    #text sub nr de puncte
     conditionalPanel(condition= NULL,
         div(uiOutput("my.app")),
         div("Apasa butonul ",span(HTML("&#9654"),
@@ -93,17 +105,17 @@ shinyUI(fluidPage(
 
       span("Trage manual de punct la orice moment."),br(),
       span("Apasa",tags$b("Random"),"pentru a da o pozitie aleatore lui n."),
-      align="center",style="font-size:8.5pt; color:teal")
+      align="center",style="font-size:10pt; color:#22283a")
     ),
     
     br(),
     
-  #buton random
+    #buton random
     div(bsButton("gen", label="Random"),align="right"),
-    div("Apasa", tags$b("Random")," pentru un punct random de pornire",
-        style = "font-size: 9.5pt;color:teal", align="right"),
+    # div("Apasa", tags$b("Random")," pentru un punct random de pornire",
+    #     style = "font-size: 9.5pt;color:teal", align="right"),
 
-    br(),
+    # br(),
     ) #sidebarPanel
     ), #column-4
 
@@ -116,6 +128,7 @@ shinyUI(fluidPage(
             column(12,
                    div(
                    div(plotOutput("initPlot"),style="width:500px",inline="TRUE"),align="center"),
+            #linie orizontala sub joc
              HTML("<hr style='height: 2px; color: #BDBDBD; background-color: #D9D9D9; border: none;'>")
             ), # column-12
             fluidRow(
@@ -126,7 +139,7 @@ shinyUI(fluidPage(
                 La fiecare pas se va marca punctul rosu ales aleatoriu.",br(),
                 "Apasa pe butonul", span(HTML("&#9654"),style="font-size:10pt;color:#999999;")
                 ," sau trage punctul din slide pentru a anima diagrama.",
-                style="color:#0066CC"
+                style="color:#22283a"
                 )
               ) # column-10
             ) # fluidRow
