@@ -293,7 +293,7 @@ output$my.app <- renderUI({
     #############################
     # Pentagon:INIT             # pozitionare text la primul punct in functie de forma si pozitie
     ############################# 
-    if (input$shape == "pent") {
+  if (input$shape == "pent") {
     
     c1 <- 0.25*(sqrt(5)-1)
     c2 <- 0.25*(sqrt(5)+1)
@@ -320,12 +320,12 @@ output$my.app <- renderUI({
         text(coord[1,1],coord[1,2]+0.04,"Punct random",col="blue",pos=4)
       }
     }
-    }
+  }
 
     #############################
     # Hexagon:INIT              # pozitionare text la primul punct in functie de forma
     #############################
-    if (input$shape == "hex") {
+  if (input$shape == "hex") {
     
       alpha <- 0.5
       beta  <- sqrt(3)/2
@@ -350,11 +350,11 @@ output$my.app <- renderUI({
           text(coord[1,1],coord[1,2]+0.04,"Punct random",col="blue",pos=4)
         }
       }
-    }
+  }
     ##################################################################################
     ### APPLIED TO ALL    
 
-    if (!is.null(input$init)) {
+  if (!is.null(input$init)) {
       if (input$init != 1) {
 
         #puncte precedente
