@@ -28,8 +28,8 @@ shinyUI(fluidPage(
     column(4,
     wellPanel(
 
-    #dropbox figuri
-    selectizeInput(inputId = 'shape', h5(tags$b('Figura')), 
+    #dropbox forme
+    selectizeInput(inputId = 'shape', h5(tags$b('Forma')), 
         choices = c('Triunghi' = 'tri',
                      'Patrat' = 'sqr',
                      'Pentagon' = 'pent',
@@ -112,16 +112,12 @@ shinyUI(fluidPage(
     br(),
     
     #buton random
-    div(bsButton("gen", label="Random"),align="right"),
-    # div("Apasa", tags$b("Random")," pentru un punct random de pornire",
-    #     style = "font-size: 9.5pt;color:teal", align="right"),
+    div(bsButton(inputId = "gen", label="Random"),align="right"),
 
-    # br(),
-    ) #sidebarPanel
-    ), #column-4
+    )
+    ),
 
-    # Show a tabset that includes a plot, summary, and table view
-    # of the generated distribution
+
     column(8,
       tabsetPanel(type = "tabs",id = "tabselected",
         tabPanel("Chaos Game",value=1,
@@ -131,23 +127,22 @@ shinyUI(fluidPage(
                    div(plotOutput("app.start"),style="width:500px",inline="TRUE"),align="center"),
             #linie orizontala sub joc
              HTML("<hr style='height: 2px; color: #BDBDBD; background-color: #D9D9D9; border: none;'>")
-            ), # column-12
+            ), 
             fluidRow(
               column(10, offset=1,
               p("
-                Aceasta diagrama
-                Aceasta secventa afiseaza pas cu pas progresia jocului.
+                Aceasta diagrama afiseaza pas cu pas progresul jocului.
                 La fiecare pas se va marca punctul rosu ales aleatoriu.",br(),
                 "Apasa pe butonul", span(HTML("&#9654"),style="font-size:10pt;color:#999999;")
                 ," sau trage punctul din slide pentru a anima diagrama.",
                 style="color:#22283a"
                 )
-              ) # column-10
-            ) # fluidRow
-          ) # fluidRow
-        ) # tabPanel
-       )# tabsetPanel
-    )# column-8
-  ) # fluidRow
- )# fluidPage
-)# shinyUI
+              ) 
+            ) 
+          ) 
+        ) 
+       )
+    )
+  )
+ )
+)

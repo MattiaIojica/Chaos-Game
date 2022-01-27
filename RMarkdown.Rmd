@@ -1,0 +1,41 @@
+---
+title: "Chaos Game"
+author: "Iojica Mattia - Rosca Alexandru"
+output: html_document
+---
+
+
+---
+
+
+In matematica, termenul de **chaos game** facea referile la o metoda de a crea un *fractal* (figura geometrica fragmentata care poate fi divizata in parti, astfel incat fiecare dintre acestea sa fie o copie in miniatura a intregului), folosind un poligon si un punct ales la intramplare inauntrul acestuia.
+
+
+In imaginea de mai jos este reprezentat triunghiul lui Sierpinski. Acesta poate fi obtinut aplicand metoda chaos game.
+<center>![Sierpinski Triangle](https://i.stack.imgur.com/AyNKm.png){width=400px}</center>
+
+---
+
+
+Proiectul nostru reprezinta o aplicatie interactiva, ce aplica metoda chaos game asupra mai multor figuri geometrice(Triunghi, Patrat, Pentagon si Hexagon).
+
+Aplicatia este realizata cu ajutorul librariei Shiny din limbajul R. In aceasta este prezent un panou prin care utilizatorul poate interactiona cu aplicatia alegand formele, distanta dintre puncte, timpul intre iteratii, dar si numarul de puncte afisate. Aici se poate gasi si un buton ce va genera aleatoriu un punct pe diagrama. Langa acest panou va fi animata aplicatia in functie de parametri alesi.
+
+
+<center>![Sierpinski Triangle](image.png)</center>
+
+
+---
+
+Programul genereaza varfurile formei geometrice reprezentate de puncte rosii, dar si un punct aleatoriu in diagrama. Acestea pot fi vazute si inaintea inceperii executiei. Afisam punctele la o distanta data dintre pozitia in care se afla si varful ales aleator.
+
+
+---
+
+
+
+
+
+
+
+
